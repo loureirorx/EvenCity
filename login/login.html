@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EVENCITY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .login {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+        
+        .login h2 {
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 28px;
+        }
+        
+        .login p {
+            color: #777;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #6e8efb;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+        
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        input {
+            padding: 15px;
+            border: none;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            outline: none;
+        }
+        
+        input:focus {
+            background-color: #fff;
+            box-shadow: 0 0 0 2px rgba(110, 142, 251, 0.4);
+        }
+        
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:first-of-type {
+            background-color: #6e8efb;
+            color: white;
+        }
+        
+        button:first-of-type:hover {
+            background-color: #5a7df9;
+            transform: translateY(-2px);
+        }
+        
+        button:last-of-type {
+            background-color: transparent;
+            color: #6e8efb;
+            border: 2px solid #6e8efb;
+            margin-top: 5px;
+        }
+        
+        button:last-of-type:hover {
+            background-color: rgba(110, 142, 251, 0.1);
+        }
+        
+        .footer {
+            margin-top: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #6e8efb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="login">
+        <div class="logo">EVENCITY</div>
+        <h2>Bem-vindo de volta</h2>
+        <p>Faça login ou cadastre-se para acessar a plataforma de eventos.</p>
+
+        <div class="form-container">
+            <input type="text" id="usuario" placeholder="Nome de usuário">
+            <input type="password" id="senha" placeholder="Senha">
+            <button onclick="fazerLogin()">Entrar</button>
+            <button onclick="fazerCadastro()">Criar conta</button>
+        </div>
+        
+        <div class="footer">
+            <p>Esqueceu sua senha? <a href="#">Recuperar</a></p>
+        </div>
+    </section>
+    
+    <script>
+        function fazerLogin() {
+            const usuario = document.getElementById("usuario").value;
+            const senha = document.getElementById("senha").value;
+            if (usuario && senha) {
+                alert("Login realizado com sucesso!");
+                window.location.href = "../index.html"; // Redireciona para a página inicial
+            } else {
+                alert("Por favor, preencha todos os campos!");
+            }
+        }
+
+        function fazerCadastro() {
+            alert("Cadastro realizado com sucesso!");
+        }
+    </script>
+</body>
+</html>

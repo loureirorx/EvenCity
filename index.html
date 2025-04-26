@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EVENCITY - Descubra os melhores eventos no Rio de Janeiro">
+    <title>EVENCITY - Eventos no RJ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <h1>EVENCITY</h1>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegação principal">
+                <ul class="nav-list">
+                    <li><a href="eventos.html">Eventos Hoje</a></li>
+                    <li><a href="categorias.html">Categorias</a></li>
+                    <li><a href="favoritos.html"><span class="icon-text">Favoritos</span> <i class="fas fa-heart" aria-hidden="true"></i></a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="container">
+                <h2>Login ou Cadastro</h2>
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="usuario">Nome de usuário</label>
+                        <input type="text" id="usuario" placeholder="Nome de usuário" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="Senha" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary" onclick="fazerLogin()">Entrar</button>
+                        <button type="button" class="btn btn-secondary" onclick="fazerCadastro()">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="parallax">
+            <div class="container parallax-content">
+                <h2>Descubra Eventos Incríveis</h2>
+                <p>Explore os melhores eventos no Rio de Janeiro!</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="container">
+                <div class="search-box">
+                    <label for="pesquisa" class="visually-hidden">Buscar eventos</label>
+                    <input type="text" id="pesquisa" placeholder="Buscar eventos...">
+                    <button type="button" class="search-btn" onclick="buscarEventos()">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <span class="visually-hidden">Pesquisar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="events-section">
+            <div class="container">
+                <h2>Eventos Recentes</h2>
+                <div id="lista-eventos" class="events-grid"></div>
+            </div>
+        </section>
+
+        <section class="user-mode-section">
+            <div class="container">
+                <h2>Modo Usuário</h2>
+                <button type="button" class="toggle-btn" onclick="alternarModo()">
+                    <i class="fas fa-globe" aria-hidden="true"></i> Alternar entre Turista/Local
+                </button>
+            </div>
+        </section>
+
+        <section class="forum-section">
+            <div class="container">
+                <h2><i class="fas fa-comments" aria-hidden="true"></i> Fórum de Eventos</h2>
+                <div id="mensagens" class="forum-messages"></div>
+                <div class="forum-input">
+                    <label for="novaMensagem">Sua mensagem</label>
+                    <textarea id="novaMensagem" placeholder="Escreva sua opinião sobre um evento..."></textarea>
+                    <button type="button" class="btn btn-primary" onclick="enviarMensagem()">Enviar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="calendar-section">
+            <div class="container">
+                <h2><i class="fas fa-calendar-alt" aria-hidden="true"></i> Minha Agenda de Eventos</h2>
+                <ul id="lista-calendario" class="calendar-list"></ul>
+                <button type="button" class="btn btn-add" onclick="adicionarEventoManual()">
+                    <i class="fas fa-plus" aria-hidden="true"></i> Adicionar Evento
+                </button>
+            </div>
+        </section>
+
+        <section class="streaming-section">
+            <div class="container">
+                <h2><i class="fas fa-video" aria-hidden="true"></i> Eventos ao Vivo</h2>
+                <div class="video-container">
+                    <video id="eventoLive" controls preload="metadata">
+                        <source src="evento.mp4" type="video/mp4">
+                        <p>Seu navegador não suporta vídeos.</p>
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <div class="container">
+                <h2><i class="fas fa-palette" aria-hidden="true"></i> Personalize seu perfil</h2>
+                <div class="profile-settings">
+                    <div class="form-group">
+                        <label for="tema">Escolha um tema:</label>
+                        <select id="tema" onchange="mudarTema()">
+                            <option value="claro">Claro</option>
+                            <option value="escuro">Escuro</option>
+                            <option value="colorido">Colorido</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommendations-section">
+            <div class="container">
+                <h2><i class="fas fa-magic" aria-hidden="true"></i> Descubra novos eventos</h2>
+                <div class="recommendation-form">
+                    <div class="form-group">
+                        <label for="preferencia">Escolha sua categoria favorita:</label>
+                        <select id="preferencia">
+                            <option value="Música">Música</option>
+                            <option value="Negócios">Negócios</option>
+                            <option value="Arte">Arte</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="recomendarEvento()">
+                        <i class="fas fa-search" aria-hidden="true"></i> Recomendar Evento
+                    </button>
+                </div>
+                <p id="resultado-recomendacao" class="recommendation-result"></p>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="container">
+                <h2><i class="fas fa-map-marked-alt" aria-hidden="true"></i> Explore o Local do Evento</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.3777449190095!2d-43.1728967!3d-22.9051586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5fb391ee4f%3A0x35c7bc469fccd265!2sRio%20de%20Janeiro%2C%20RJ!5e0!3m2!1spt-BR!2sbr!4v1683401703677"
+                        width="600" height="450" style="border:0;" 
+                        allowfullscreen="" loading="lazy"
+                        title="Mapa do Rio de Janeiro">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="tourism-section">
+            <div class="container">
+                <h2><i class="fas fa-map-pin" aria-hidden="true"></i> Lugares Próximos aos Eventos</h2>
+                <div id="lugares-recomendados" class="places-grid"></div>
+            </div>
+        </section>
+
+        <section class="transport-section">
+            <div class="container">
+                <h2><i class="fas fa-bus" aria-hidden="true"></i> Como Chegar ao Evento?</h2>
+                <div class="transport-form">
+                    <div class="form-group">
+                        <label for="localUsuario">Digite sua localização</label>
+                        <input type="text" id="localUsuario" placeholder="Digite sua localização">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="buscarTransporte()">
+                        <i class="fas fa-search" aria-hidden="true"></i> Buscar Rota
+                    </button>
+                </div>
+                <p id="resultado-transporte" class="transport-result"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>EVENCITY</h2>
+                    <p>Descubra o Rio de Janeiro</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="termos.html">Termos de Uso</a></li>
+                        <li><a href="privacidade.html">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Siga-nos</h3>
+                    <ul class="social-icons">
+                        <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EVENCITY. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
